@@ -1,4 +1,5 @@
 import 'package:api/RestApi/RestClient.dart';
+import 'package:api/Screen/ProductShowScreen.dart';
 import 'package:api/Style/style.dart';
 
 import 'package:api/Widgets/errorDialog.dart';
@@ -6,23 +7,34 @@ import 'package:api/Widgets/textformField.dart';
 
 import 'package:flutter/material.dart';
 
-class ProductCreateScreen extends StatefulWidget {
-  const ProductCreateScreen({super.key});
+class ProductUpdateScreen extends StatefulWidget {
+  final Map updatedProduct;
+  const ProductUpdateScreen(this.updatedProduct);
 
   @override
-  State<ProductCreateScreen> createState() => _ProductCreateScreenState();
+  State<ProductUpdateScreen> createState() => _ProductUpdateScreenState();
 }
 
-class _ProductCreateScreenState extends State<ProductCreateScreen> {
+class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
   Map<String, String> FormValues = {
-    "Img": "",
-    "ProductCode": "",
-    "ProductName": "",
+    "title": "",
+    "image": "",
+    "star": "",
+    "price": "",
+    "product_code": "",
     "Qty": "",
-    "TotalPrice": "",
-    "UnitPrice": ""
   };
   bool Loading = false;
+
+  @override
+  void initState() {
+    FormValues.update('title', (value) => widget.updatedProduct['title']);
+    FormValues.update('image', (value) => widget.updatedProduct['image']);
+    FormValues.update('star', (value) => widget.updatedProduct['star']);
+    FormValues.update('price', (value) => widget.updatedProduct['price']);
+    FormValues.update(
+        'product_code', (value) => widget.updatedProduct['product_code']);
+  }
 
   InputOnChange(Mapkey, Textvalue) {
     setState(() {
@@ -86,21 +98,19 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
       });
 
       //form validation complete....data is submitting to api
-      await ProductCreateRequest(FormValues);
+      await ProductUpdateRequest(FormValues, widget.updatedProduct['_id']);
+      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (contex)=> ProductShowScreen()), (Route route) => false);
       setState(() {
         Loading = false;
       });
     }
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Create Product'),
-          
+          title: Text('Update Product'),
         ),
         body: Loading
             ? (Center(
@@ -115,6 +125,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                       height: 30.0,
                     ),
                     TextFormField(
+                      initialValue: FormValues['title'],
                       onChanged: (Textvalue) {
                         InputOnChange('ProductName', Textvalue);
                       },
@@ -125,6 +136,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
+                      initialValue: FormValues['image'],
                       onChanged: (Textvalue) {
                         InputOnChange('Img', Textvalue);
                       },
@@ -135,6 +147,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
+                      initialValue: FormValues['star'],
                       onChanged: (Textvalue) {
                         InputOnChange('UnitPrice', Textvalue);
                       },
@@ -147,6 +160,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
+                      initialValue: FormValues['price'],
                       onChanged: (Textvalue) {
                         InputOnChange('TotalPrice', Textvalue);
                       },
@@ -157,6 +171,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
+                      initialValue: FormValues['product_code'],
                       onChanged: (Textvalue) {
                         InputOnChange('ProductCode', Textvalue);
                       },
@@ -201,7 +216,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
                           onPressed: () {
                             FormOnSubmit();
                           },
-                          child: DangerButtonChild('Done')),
+                          child: DangerButtonChild('Update Now')),
                     ),
                   ],
                 )),

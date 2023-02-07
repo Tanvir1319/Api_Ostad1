@@ -1,21 +1,51 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 const colorWhite = Color.fromRGBO(255, 255, 255, 1);
+const colorGreen = Color.fromRGBO(33, 191, 115, 1);
 
-InputDecoration AppInputDecoration(label) {
-  return InputDecoration(
-    focusedBorder: const OutlineInputBorder(
-      borderSide: const BorderSide(color: Colors.green, width: 1),
+DecoratedBox AppDropDownStyle(child) {
+  return DecoratedBox(
+    decoration: BoxDecoration(
+      color: Colors.white,
+      border: Border.all(color: Colors.white, width: 1.0),
+      borderRadius: BorderRadius.circular(6.0),
     ),
-    fillColor: colorWhite,
-    filled: true,
-    contentPadding: EdgeInsets.fromLTRB(20, 10, 10, 20),
-    enabledBorder: const OutlineInputBorder(
-      borderSide: const BorderSide(color: colorWhite,width: 0),
+    child: Padding(
+      padding: EdgeInsets.only(left: 30.0, right: 30.0),
+      child: child,
     ),
-    border: OutlineInputBorder(),
-    label: label,
+  );
+}
+
+ButtonStyle AppButtonStyle() {
+  return ElevatedButton.styleFrom(
+      elevation: 3,
+      padding: EdgeInsets.all(0),
+      backgroundColor: Colors.transparent,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)));
+}
+
+Ink DangerButtonChild(ButtonText) {
+  return Ink(
+    decoration: BoxDecoration(
+      color: Colors.red,
+      borderRadius: BorderRadius.circular(6),
+    ),
+    child: Container(
+      height: 45,
+      alignment: Alignment.center,
+      child: Text(
+        ButtonText,
+        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
+      ),
+    ),
+  );
+}
+
+SliverGridDelegateWithFixedCrossAxisCount ProductGrid() {
+  return SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,
+    mainAxisSpacing: 3,
+    mainAxisExtent: 400,
   );
 }
