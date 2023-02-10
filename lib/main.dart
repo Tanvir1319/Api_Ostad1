@@ -1,4 +1,5 @@
 import 'package:api/Screen/ProductShowScreen.dart';
+import 'package:api/onboarding/splashScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'Screen/ProductCreateScreen.dart';
@@ -15,8 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'API',
+      theme: ThemeData(
+        fontFamily: 'Poppins',
+      ),
       debugShowCheckedModeBanner: false,
-      home: ProductCreateScreen(),
+      home: MySplashScreen(),
     );
   }
 }

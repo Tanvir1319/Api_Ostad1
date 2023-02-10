@@ -17,23 +17,27 @@ class ProductUpdateScreen extends StatefulWidget {
 
 class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
   Map<String, String> FormValues = {
-    "title": "",
-    "image": "",
-    "star": "",
-    "price": "",
-    "product_code": "",
-    "Qty": "",
+    "Img":"",
+    "ProductCode":"",
+    "ProductName":"",
+    "Qty":"",
+    "TotalPrice":"",
+    "UnitPrice":""
+
+
+   
+    
   };
   bool Loading = false;
 
   @override
   void initState() {
-    FormValues.update('title', (value) => widget.updatedProduct['title']);
-    FormValues.update('image', (value) => widget.updatedProduct['image']);
-    FormValues.update('star', (value) => widget.updatedProduct['star']);
-    FormValues.update('price', (value) => widget.updatedProduct['price']);
-    FormValues.update(
-        'product_code', (value) => widget.updatedProduct['product_code']);
+    FormValues.update('Img', (value) => widget.updatedProduct['Img']);
+    FormValues.update('ProductCode', (value) => widget.updatedProduct['ProductCode']);
+    FormValues.update('ProductName', (value) => widget.updatedProduct['ProductName']);
+    FormValues.update('Qty', (value) => widget.updatedProduct['Qty']);
+    FormValues.update( 'TotalPrice', (value) => widget.updatedProduct['TotalPrice']);
+    FormValues.update('UnitPrice', (value) => widget.updatedProduct['UnitPrice']);
   }
 
   InputOnChange(Mapkey, Textvalue) {
@@ -97,7 +101,6 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
         Loading = true;
       });
 
-      //form validation complete....data is submitting to api
       await ProductUpdateRequest(FormValues, widget.updatedProduct['_id']);
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (contex)=> ProductShowScreen()), (Route route) => false);
       setState(() {
@@ -115,8 +118,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
         body: Loading
             ? (Center(
                 child: CircularProgressIndicator(
-                    color: Colors.brown,
-                    valueColor: AlwaysStoppedAnimation(Colors.yellow)),
+                ),
               ))
             : SingleChildScrollView(
                 child: (Column(
@@ -125,7 +127,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                       height: 30.0,
                     ),
                     TextFormField(
-                      initialValue: FormValues['title'],
+                      initialValue: FormValues['ProductName'],
                       onChanged: (Textvalue) {
                         InputOnChange('ProductName', Textvalue);
                       },
@@ -136,7 +138,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      initialValue: FormValues['image'],
+                      initialValue: FormValues['Img'],
                       onChanged: (Textvalue) {
                         InputOnChange('Img', Textvalue);
                       },
@@ -147,7 +149,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      initialValue: FormValues['star'],
+                      initialValue: FormValues['UnitPrice'],
                       onChanged: (Textvalue) {
                         InputOnChange('UnitPrice', Textvalue);
                       },
@@ -160,7 +162,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      initialValue: FormValues['price'],
+                      initialValue: FormValues['TotalPrice'],
                       onChanged: (Textvalue) {
                         InputOnChange('TotalPrice', Textvalue);
                       },
@@ -171,7 +173,7 @@ class _ProductUpdateScreenState extends State<ProductUpdateScreen> {
                       height: 10.0,
                     ),
                     TextFormField(
-                      initialValue: FormValues['product_code'],
+                      initialValue: FormValues['ProductCode'],
                       onChanged: (Textvalue) {
                         InputOnChange('ProductCode', Textvalue);
                       },

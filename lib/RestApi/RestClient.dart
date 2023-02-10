@@ -9,7 +9,7 @@ var PostHeader = {"Content-Type": "application/json"};
 // Create Product Api data function
 
 Future<bool> ProductCreateRequest(FormValues) async {
-  var URL = Uri.parse('https://crud.teamrabbil.com/api/v1/CreateProduct');
+  var URL = Uri.parse('https://crud.devnextech.com/api/v1/CreateProduct');
   var PostBody = json.encode(FormValues);
 
   var response = await http.post(URL, headers: PostHeader, body: PostBody);
@@ -47,7 +47,7 @@ Future<List> ProductReadRequest() async {
 
 // Api :Delete function
 Future<bool> ProductDeleteRequest(id) async {
-  var URL = Uri.parse('https://crud.devnextech.com/api/v1/ReadProduct');
+  var URL = Uri.parse('https://crud.devnextech.com/api/v1/DeleteProduct'+id);
 
   var response = await http.get(URL, headers: PostHeader);
 
@@ -68,7 +68,7 @@ Future<bool> ProductDeleteRequest(id) async {
 // Update Product Api data function
 
 Future<bool> ProductUpdateRequest(FormValues,id) async {
-  var URL = Uri.parse('https://crud.teamrabbil.com/api/v1/CreateProduct/'+id);
+  var URL = Uri.parse('https://crud.devnextech.com/api/v1/CreateProduct/'+id);
   var PostBody = json.encode(FormValues);
 
   var response = await http.post(URL, headers: PostHeader, body: PostBody);

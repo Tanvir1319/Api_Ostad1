@@ -77,14 +77,13 @@ class _ProductShowScreenState extends State<ProductShowScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('hi'),
+        title: Text('Crud APi Show Screen'),
       ),
       body: Container(
         child: Loading
             ? (Center(
                 child: CircularProgressIndicator(
-                    color: Colors.brown,
-                    valueColor: AlwaysStoppedAnimation(Colors.yellow)),
+                    ),
               ))
             : RefreshIndicator(
                 onRefresh: () async {
@@ -125,7 +124,7 @@ class _ProductShowScreenState extends State<ProductShowScreen> {
                                       },
                                       icon: Icon(
                                         Icons.edit,
-                                        color: Colors.blue,
+                                        color: EditIconColor,
                                       ),
                                     ),
                                     SizedBox(
@@ -138,7 +137,7 @@ class _ProductShowScreenState extends State<ProductShowScreen> {
                                       },
                                       icon: Icon(
                                         Icons.delete,
-                                        color: Colors.red,
+                                        color: CommonRedColor,
                                       ),
                                     ),
                                   ],

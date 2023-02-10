@@ -1,3 +1,4 @@
+import 'package:api/Style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -7,8 +8,8 @@ void SuccessToast(msg){
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.green,
-        textColor: Colors.white,
+        backgroundColor: ToastSucess,
+        textColor: FormWhiteColor,
         fontSize: 16.0
     );
 }
@@ -19,8 +20,8 @@ void ErrorToast(msg){
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
-        backgroundColor: Colors.red,
-        textColor: Colors.white,
+        backgroundColor: CommonRedColor,
+        textColor: FormWhiteColor,
         fontSize: 16.0
     );
 }

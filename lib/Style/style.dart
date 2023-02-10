@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
-const colorWhite = Color.fromRGBO(255, 255, 255, 1);
-const colorGreen = Color.fromRGBO(33, 191, 115, 1);
+const FormWhiteColor = Color(0xFFFAFAFA);
+const EditIconColor = Color(0xFF00BCD4);
+const CommonRedColor = Color(0xFFE53935);
+const ToastSucess = Color(0xFF33691E);
 
 DecoratedBox AppDropDownStyle(child) {
   return DecoratedBox(
@@ -44,8 +46,9 @@ Ink DangerButtonChild(ButtonText) {
 
 SliverGridDelegateWithFixedCrossAxisCount ProductGrid() {
   return SliverGridDelegateWithFixedCrossAxisCount(
-    crossAxisCount: 3,
+    crossAxisCount: 2,
     mainAxisSpacing: 3,
     mainAxisExtent: 400,
   );
 }
+

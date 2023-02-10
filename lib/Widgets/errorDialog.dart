@@ -1,3 +1,4 @@
+import 'package:api/Style/style.dart';
 import 'package:flutter/material.dart';
 
 class ErrorDialog extends StatelessWidget {
@@ -18,7 +19,7 @@ class ErrorDialog extends StatelessWidget {
             },
             child: Center(child: Text("Ok"),),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
+              backgroundColor: CommonRedColor,
             ),
             ),
       ],

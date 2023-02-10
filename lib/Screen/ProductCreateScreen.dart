@@ -15,12 +15,12 @@ class ProductCreateScreen extends StatefulWidget {
 
 class _ProductCreateScreenState extends State<ProductCreateScreen> {
   Map<String, String> FormValues = {
-    "Img": "",
-    "ProductCode": "",
-    "ProductName": "",
-    "Qty": "",
-    "TotalPrice": "",
-    "UnitPrice": ""
+    "Img":"",
+    "ProductCode":"",
+    "ProductName":"",
+    "Qty":"",
+    "TotalPrice":"",
+    "UnitPrice":""
   };
   bool Loading = false;
 
@@ -105,8 +105,7 @@ class _ProductCreateScreenState extends State<ProductCreateScreen> {
         body: Loading
             ? (Center(
                 child: CircularProgressIndicator(
-                    color: Colors.brown,
-                    valueColor: AlwaysStoppedAnimation(Colors.yellow)),
+                ),
               ))
             : SingleChildScrollView(
                 child: (Column(
